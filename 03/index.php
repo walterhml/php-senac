@@ -91,9 +91,10 @@ echo "falso e falso: ";
 echo false || false ? "false <br>" : "false <br>";
 
 
-
-
-
+ 
+// nao logico (NOT);
+echo "negando algo que é verdadeiro: ";
+echo !true ? "verdadeiro <br>" : "false <br>";
 
 
 
