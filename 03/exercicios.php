@@ -82,3 +82,4 @@ echo $n1 >= $n2 ? "verdadeiro" : "falso <br>";
 
 
   ?>
+  
