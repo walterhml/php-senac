@@ -73,22 +73,31 @@ do {
     A sequência de Fibonacci é uma sequência de números inteiros em que cada termo é a soma dos dois anteriores.
     Crie um programa que solicite ao usuário um número N e exiba os N primeiros termos da sequência de Fibonacci.
 */
-
-
+echo "<br>";
 
 // Solução com for
+$termos = 15;
+$anterior = 0;
+$atual = 1;
+echo "solução com o fore: <br>";
+for ($i = 0; $i < $termos; $i++) {
+    $proximo = $anterior + $atual;
+    echo "$proximo ";
+    $anterior = $atual;
+    $atual = $proximo;
+}
 
-
-
-
+echo "<br>";
 
 
 // Solução com while
+echo "solução com o while: <br>";
 $anterior = 0;
 $atual = 1;
 $i = 2;
+$termos = 13;
 
-while($i < 15){
+while($i < $termos){
     $proximo = $anterior + $atual;
     echo "$proximo ";
     $anterior = $atual;
