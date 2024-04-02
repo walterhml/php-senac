@@ -1,7 +1,7 @@
 <?php
 
 
-fwrite(STDOUT, "Quantidade de linhas da piramide: ");
+readline(STDOUT, "Quantidade de linhas da piramide: ");
 $levels = (int) fgets(STDIN);
 
 

@@ -311,6 +311,8 @@ echo "A soma dos dígitos é: $soma_digitos\n";
 
 echo "<br>";
 echo "<br>";
+
+
 //// Exercício 10: Geração de Sequência Numérica
 /*
     Solicita ao usuário um número inteiro N e exibe os primeiros N números da sequência: 1, 3, 6, 10, 15, 21, ...
@@ -318,20 +320,19 @@ echo "<br>";
 // Implementação de Geração de Sequência Numérica
 
 
+$sequencia = range(1, 35);
+
+foreach ($sequencia as $numero){
+    echo $numero . " ";
+}
 
 
+$inicio = 5;
+$fim = 666;
 
-
-
-
-
-
-
-
-
-
-
-
+for ($i = $inicio; $i <= $fim; $i++) {
+    echo "essa é a sequencia de numero com for: $i";
+}
 
 
 
