@@ -21,19 +21,6 @@ public function ligar() {
     echo "O carro está ligado. <br>";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
  // instancia um novo objeto do tipo Carro
 $meuCarro = new Carro("Toyota", "Corolla", 2014) . "<br>"; 
