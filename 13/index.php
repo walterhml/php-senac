@@ -129,8 +129,6 @@ $contaPouapanca1->aplicarRendimento();
 // echo "Dados da Conta Poupança 1: $contaPouapanca1 <br>";
 // echo "Dados da Conta Corrente 2: $contaCorrente2 <br>";
 
-
-
 echo "Dados da Conta Corrente 1: " . $contaCorrente1->getDetalhes() . "<br>";
 echo "Dados da Conta Poupança 1: " . $contaPouapanca1->getDetalhes() . "<br>";
 echo "Dados da Conta Corrente 2: " . $contaCorrente2->getDetalhes() . "<br>";
