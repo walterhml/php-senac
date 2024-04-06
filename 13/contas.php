@@ -123,7 +123,7 @@ $contaCorrente1->sacar(100);
 $contaPouapanca1->sacar(200);
 $contaCorrente2->transferir(200, $contaPouapanca1);
 $contaPouapanca1->aplicarRendimento();
-
+    
 // Exibindo dados das contas:
 echo "Dados da Conta Corrente 1: $contaCorrente1 <br>";
 echo "Dados da Conta Poupança 1: $contaPouapanca1 <br>";
