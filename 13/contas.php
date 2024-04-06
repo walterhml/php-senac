@@ -66,7 +66,7 @@ abstract class Conta {
 
     // Método para exibir dados da conta
     public function __toString() {
-        return "Numero: $this->numero - Saldo: $this->saldo - Cliente: {$this->cliente->getNome()}";
+        return "Numero: $this->numero - Saldo: $this->saldo - Cliente: {$this->cliente->getNome() }";
     }
 }
 
@@ -85,7 +85,7 @@ class ContaCorrente extends Conta {
     public function sacar($valorSaque) {
         $valorLimiteEspecial = $this->saldo + $this->limiteChequeEspecial;
         if($valorSaque <= $valorLimiteEspecial) {
-            return parent::sacar($valorLimiteEspecial);
+            return parent::sacar($valorSaque);
         }
 
         return false;
@@ -98,27 +98,16 @@ class ContaPoupanca extends Conta {
     private $taxaRendimento;
 
     // Método construtor
-    public function __construct() {
-        
+    public function __construct($cliente, $numero, $saldo, $taxaRendimento) {
+        parent::__construct($cliente, $numero, $saldo);
+        $this->taxaRendimento = $taxaRendimento;
     }
 
     // Metodo para aplicar rendimetno
     public function aplicarRendimento() {
-
+        $this->saldo += $this->saldo * $this->taxaRendimento;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Criando instâncias de Cliente
 $cliente1 = new Cliente("João", "123456789-00");
@@ -131,10 +120,21 @@ $contaCorrente2 = new ContaCorrente($cliente2, 1002, 3000, 1000);
 
 // Realizando operações nas contas
 $contaCorrente1->sacar(100);
+$contaPouapanca1->sacar(200);
 $contaCorrente2->transferir(200, $contaPouapanca1);
 $contaPouapanca1->aplicarRendimento();
 
 // Exibindo dados das contas:
+echo "Dados da Conta Corrente 1: $contaCorrente1 <br>";
+echo "Dados da Conta Poupança 1: $contaPouapanca1 <br>";
+echo "Dados da Conta Corrente 2: $contaCorrente2 <br>";
+
+echo "Deposito de 1000 reais em cada conta: <br>";
+$contaCorrente1->depositar(1000);
+$contaPouapanca1->depositar(1000);
+$contaCorrente2->depositar(1000);
+
+// Exibindo dados das contas pós depósitos:
 echo "Dados da Conta Corrente 1: $contaCorrente1 <br>";
 echo "Dados da Conta Poupança 1: $contaPouapanca1 <br>";
 echo "Dados da Conta Corrente 2: $contaCorrente2 <br>";
