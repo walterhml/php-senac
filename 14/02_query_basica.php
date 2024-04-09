@@ -15,6 +15,10 @@ $consulta = "SELECT * FROM contato_info";
 // executa a query e amarzena o resultado em uma variavel
 $result = $connection->query($consulta);
 
+while($row = $result->fetch_assoc()) {
+    echo "Nome: " . $row["nome"] . "<br>";
+}
+
 // exibe os resultados em tela
 print_r($result);
 
