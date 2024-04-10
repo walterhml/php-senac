@@ -31,7 +31,8 @@ if ($result->num_rows>0){
     echo "Nenhum registro encontrado";
 }
 
-
+// Fechando a conexão com o banco de dados
+$connection->close();
 
 
 
