@@ -1,8 +1,8 @@
 <?php
 // Definindo constantes para a conexão com o banco de dados
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'usuario_contatos');
-define('DB_PASSWORD', 'Senha@123');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'contatos');
 
 // Criar uma conexão com o banco de dados
