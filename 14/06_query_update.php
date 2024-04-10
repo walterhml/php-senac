@@ -45,7 +45,7 @@ if ($stmt) {
 
 
 
-
+$connection->close();
 
 
 
