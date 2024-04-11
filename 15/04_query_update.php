@@ -13,34 +13,31 @@ if($connection->connect_error) {
     die("Erro de conexão: " . $connection->connect_error);
 }
 
-$item = "BomBom BOM";
-$quantidade = 24;
+$alt1 = "granola com chocolate";
+$alt2 = 2;
+$id = 6;
 
-$insert = "INSERT INTO itens_compra (nome_produto, quantidade) VALUES (?, ?)";
-$stmt = $connection->prepare($insert);
+$my_update = "UPDATE itens_compra SET nome_produto = ?, quantidade = ? WHERE id = ?";
+$stmt = $connection->prepare($my_update);
+
 
 if ($stmt) {
-    $stmt->bind_param("si", $item, $quantidade);
+    $stmt->bind_param("sii", $alt1, $alt2, $id);
 
-    if ($stmt->execute()) {
-        echo "<h1>Inserindo dados ao banco de dados!</h1>";
-        echo "item inserido com sucesso.";
-    } else {
-        echo "Erro ao inserir o item: " . $stmt->error;
+    if ($stmt->execute()){
+        echo "<h1>alterando itens do banco de dados por ID</h1>";
+        echo "item atualizado com sucesso";
     }
+    else {
+        echo "erro ao atualizar o contato: " . $stmt->error;
+    }
+
     $stmt->close();
 } else {
-    echo "erro na consulta preparada: " . $connection->error;
+    echo "Erro na consulta preparada: " . $connection->error;
 }
 
 
 
 $connection->close();
-
-
-
-
-
-
-
 ?>

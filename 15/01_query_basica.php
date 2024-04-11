@@ -17,8 +17,9 @@ if($connection->connect_error) {
 $consulta = "SELECT * FROM itens_compra";
 
 $resultado = $connection->query($consulta);
-
+echo "<h1>Query basica</h1>";
 while($row = $resultado->fetch_assoc()) {
+    
     echo "Nome: " . $row["nome_produto"] . " - Quantidade: " . $row["quantidade"] . " - ";
     if ($row["comprado"] == true) {
         echo "sim <br>";
