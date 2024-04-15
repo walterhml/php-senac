@@ -10,8 +10,4 @@ $repository->deleteItem(13);
 
 
 
-
-
-
-
 ?>
