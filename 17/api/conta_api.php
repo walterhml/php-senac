@@ -1,16 +1,22 @@
 <?php
 
-require_once '../database/ClienteRepository.php';
+require_once '../database/ContaRepositoty.php';
 
-$action = $_GET['escolha'];
+$action = $_GET['action'];
 
-echo " O usurario a ação $action";
+switch($action) {
+    case 'listar':
+        listarcontas();
+        break;
+    default:
+        http_response_code(400);
+        echo json_encode(['error' => 'Ação invalida']);
+}
 
-
-
-
-
-
+function listarContas() {
+    $contas = ContaRepository::getAllContas();
+    echo json_encode($contas);
+}
 
 
 ?>
