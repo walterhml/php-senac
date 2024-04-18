@@ -1,10 +1,11 @@
 <?php
+require_once 'DatabaseRepository.php';
 
 class ContaRepository {
 
     public static function getAllContas() {
         $connection = DatabaseRepository::connect();
-        $result = $connection->query("SELECT * FROM cliente");
+        $result = $connection->query("SELECT * FROM conta");
 
         $contas = [];
         if($result->num_rows > 0) {
@@ -13,36 +14,7 @@ class ContaRepository {
             }
         }
         $connection->close();
-        return $cliente;
-
-
-
-
-
-
-
-
+        return $contas;
     }
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
