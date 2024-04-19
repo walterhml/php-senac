@@ -33,6 +33,21 @@ class ClienteRepository {
 
     }
 
+    public static function insertCliente($nome, $cpf) {
+        $connection = DatabaseRepository::connect();
+        $sql = "INSERT INTO cliente (nome, cpf) VALUES ('$nome', '$cpf'";
+        $sucess = $connection->query($sql);
+        $connection->close();
+        return $sucess;
+    }
+
+    public static function updateCliente($id, $nome, $cpf) {
+        $connection = DatabaseRepository::connect();
+        $sql = "UPDATE cliente SET nome='$nome', cpf='$cpf', WHERE id=$id";
+        $sucess = $connection->query($sql);
+        $connection->close();
+        return $sucess;
+    }
 
 }
 ?>
