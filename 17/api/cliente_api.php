@@ -30,7 +30,8 @@ function listarClientes() {
 }
 
 function buscarClientePorId() {
-
+    $id = $_GET['id'];
+    ClienteRepository::getAllClientes();
 }
 
 function cadastrarCliente() {

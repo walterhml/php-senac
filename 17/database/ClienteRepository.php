@@ -16,5 +16,23 @@ class ClienteRepository {
         return $cliente;
 
     }
+
+    public static function getClienteById($id) {
+        $connection = DatabaseRepository::connect();
+        $sql = 'SELECT * FROM Cliente WHERE id = $id';
+        $result = $connection->query($sql);
+
+        $id_cliente = null;
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                $id_cliente[] = $row;
+            }
+            $connection->close();
+            return $id_cliente;
+        }
+
+    }
+
+
 }
 ?>

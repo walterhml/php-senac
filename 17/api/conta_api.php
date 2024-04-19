@@ -18,5 +18,20 @@ function listarContas() {
     echo json_encode($contas);
 }
 
+function buscarClientePorId() {
+    
+}
+
+function cadastrarCliente() {
+
+}
+
+function atualizarCliente() {
+
+}
+
+function excluirCliente() {
+    
+}
 
 ?>
