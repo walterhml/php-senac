@@ -19,14 +19,15 @@ class ContaRepository {
 
     public static function getContaById($id) {
         $connection = DatabaseRepository::connect();
-        $result = $connection->query("SELECT * FROM conta WHERE id = $id");
+        $sql = "SELECT * FROM conta WHERE id = $id";
+        $result = $connection->query($sql);
 
-        $contas = [];
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()){
-                $contas[] = $row;
-            }
+        $cliente = null;
+        if($result->num_rows > 0) {
+            $cliente = $result->fetch_assoc();
         }
+        $connection->close();
+        return $cliente;
     }
 
     public static function insertConta($id, $cliente_id, $numero, $saldo, $tipo, $limite_cheque_especial, $taxa_rendimento) {

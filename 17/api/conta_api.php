@@ -1,5 +1,5 @@
 <?php
-require_once '../database/ContaRepository.php';
+require_once '..//database/ContaRepositoty.php';
 
 $action = $_GET['action'];
 
