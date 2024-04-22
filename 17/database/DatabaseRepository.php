@@ -1,5 +1,4 @@
 <?php
-
 class DatabaseRepository {
     private static $server = 'localhost';
     private static $username = 'root';
@@ -10,5 +9,4 @@ class DatabaseRepository {
         return new mysqli(self::$server, self::$username, self::$password, self::$database);
     }
 }
-
 ?>

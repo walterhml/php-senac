@@ -1,37 +1,20 @@
 <?php
-
-require_once '../database/ContaRepositoty.php';
+require_once '../database/ContaRepository.php';
 
 $action = $_GET['action'];
 
 switch($action) {
     case 'listar':
-        listarcontas();
+        listarContas();
         break;
     default:
-        http_response_code(400);
-        echo json_encode(['error' => 'Ação invalida']);
+        http_response_code(400); // Requisição inválida
+        echo json_encode(['error' => 'Ação inválida']);
 }
 
 function listarContas() {
     $contas = ContaRepository::getAllContas();
     echo json_encode($contas);
-}
-
-function buscarClientePorId() {
-    
-}
-
-function cadastrarCliente() {
-
-}
-
-function atualizarCliente() {
-
-}
-
-function excluirCliente() {
-    
 }
 
 ?>
