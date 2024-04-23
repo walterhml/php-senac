@@ -19,89 +19,41 @@ class ContaRepository {
 
     public static function getContaById($id) {
         $connection = DatabaseRepository::connect();
-        $sql = "SELECT * FROM conta WHERE id = $id";
-        $result = $connection->query($sql);
+        $result = $connection->query("SELECT * FROM conta WHERE id= $id");
 
-        $cliente = null;
+        $conta = null;
+
         if($result->num_rows > 0) {
-            $cliente = $result->fetch_assoc();
+            $conta = $result->fetch_assoc();
         }
+
         $connection->close();
-        return $cliente;
+        return $conta;
     }
 
-    public static function insertConta($id, $cliente_id, $numero, $saldo, $tipo, $limite_cheque_especial, $taxa_rendimento) {
+    public static function insertConta($cliente_id, $numero, $saldo, $tipo, $limite_cheque_especial, $taxa_rendimento) {
         $connection = DatabaseRepository::connect();
-        $sql = "INSERT INTO conta (id, cliente_id, numero, saldo, tipo, limite_cheque_especial, taxa_rendimento) VALUES ($id, $cliente_id, $numero, $saldo, '$tipo', $limite_cheque_especial, $taxa_rendimento)";
-        $sucess = $connection->query($sql);
+        $sql = "INSERT INTO conta (cliente_id, numero, saldo, tipo, limite_cheque_especial,	taxa_rendimento)
+                VALUES ($cliente_id, $numero, $saldo, '$tipo', $limite_cheque_especial, $taxa_rendimento)";
+        $success = $connection->query($sql);
         $connection->close();
-        return $sucess;
+        return $success;
     }
 
-    public static function updateConta($id, $cliente_id, $numero, $saldo, $tipo, $limite_cheque_especial, $taxa_rendimento) {
+    public static function updateConta($id_conta, $saldo, $limite_cheque_especial, $taxa_rendimento) {
         $connection = DatabaseRepository::connect();
-        $result = $connection->query("UPDATE conta SET (id, cliente_id, numero, saldo, tipo, limite_cheque_especial, taxa_rendimento) VALUES ($id, $cliente_id, $numero, $saldo, '$tipo', $limite_cheque_especial, $taxa_rendimento)");
-        $sucess = $connection->query($result);
+        $sql = "UPDATE conta SET saldo=$saldo, limite_cheque_especial=$limite_cheque_especial, taxa_rendimento =$taxa_rendimento
+                WHERE id=$id_conta";
+        $success = $connection->query($sql);
         $connection->close();
-        return $sucess;
+        return $success;
     }
 
     public static function deleteConta($id) {
         $connection = DatabaseRepository::connect();
-        $sql = "DELETE FROM conta WHERE id = $id;";
-        $result = $connection->query($sql);
+        $success = $connection->query("DELETE FROM conta WHERE id=$id");
         $connection->close();
-        return $result;
+        return $success;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}   
 ?>
