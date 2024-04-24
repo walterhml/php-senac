@@ -1,4 +1,6 @@
 <?php
+
+
 class Cliente {
     // Atributos
     private $id;
@@ -24,7 +26,7 @@ class Cliente {
     public function getCpf() {
         return $this->cpf;
     }
-    
+
     public function __toString() {
         return "Nome: $this->nome - CPF: $this->cpf";
     }

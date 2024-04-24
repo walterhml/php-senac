@@ -1,7 +1,7 @@
 <?php
 
 require_once '../database/ClienteRepository.php';
-require_once '../model/cliente.php';
+require_once '../models/cliente.php';
 
 $action = $_GET['action'];
 
@@ -62,11 +62,9 @@ function cadastrarCliente() {
 function atualizarCliente() {
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = json_decode(file_get_contents("php://input"));
-        $id = $data->id;
-        $nome = $data->nome;
-        $cpf = $data->cpf;
-
-        $success = ClienteRepository::updateCliente($id, $nome, $cpf);
+        
+        $cliente = new Cliente($data->id, $data->nome, $data->cpf);
+        $success = ClienteRepository::updateCliente($cliente);
         echo json_encode(['success' => $success]);
     } else {
         http_response_code(405);
