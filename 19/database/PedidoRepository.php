@@ -2,6 +2,7 @@
 
 require_once 'DatabaseRepository.php';
 require_once 'model/Pedido.php';
+require_once 'model/Produto.php';
 
 class PedidoRepository {
     public static function getAllPedidos() {

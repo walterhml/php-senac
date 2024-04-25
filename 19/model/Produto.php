@@ -1,6 +1,6 @@
 <?php
 
-class Produto {
+class Produto implements JsonSerializable {
     private $id;
     private $nome;
     private $descricao;
@@ -14,7 +14,14 @@ class Produto {
         $this->preco = $preco;
     }
 
-
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'nome' => $this->nome,
+            'descricao' => $this->preco
+        ];
+    }
 
 
 
