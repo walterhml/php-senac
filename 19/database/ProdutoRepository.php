@@ -32,6 +32,16 @@ class ProdutoRepository {
         $connection->close();
         return $produto;
     }
+
+    public static function insertProduct(Produto $produto) {
+        $connection = DatabaseRepository::connect();
+        $nome = $produto->getNome();
+        $descricao = $produto->getDescricao();
+        $preco = $produto->getPreco();
+        $sql = "INSERT INTO produto (nome, descricao, preco) VALUES ('$nome', '$descricao', '$preco')";        
+        $sucess = $connection->query($sql);
+        return $sucess;
+    }
 }
 
 ?>
