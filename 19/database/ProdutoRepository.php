@@ -57,14 +57,18 @@ class ProdutoRepository {
         $connection->close();
         return $success;
     }
-}
 
-    public static function deleteProduto($id) {
+
+public static function deleteProduto($id) {
         $connection = DatabaseRepository::connect();
         $result = $connection->query("DELETE FROM produto WHERE id = $id");
         $connection->query($result);
         $connection->close();
         return $result;
     }
+
+}
+
+    
 
 ?>
