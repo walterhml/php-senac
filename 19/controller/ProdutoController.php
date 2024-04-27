@@ -49,11 +49,27 @@ class ProdutoController {
     }
 
     public static function cadastrarProduto() {
-        echo "produto cadastrado";
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = json_decode(file_get_contents("php://input"));
+            $produto = new Produto(null, $data->nome, $data->descricao, $data->preco);
+
+            $success = ProdutoRepository::insertProduto($produto);
+            echo json_encode(['success' => $success]);
+        } else {
+            http_response_code(405);
+        }
     }
 
     public static function atualizarProduto() {
-        echo "produto atualizado";
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = json_decode(file_get_contents("php://input"));
+            $produto = new Produto($data->id, $data->nome, $data->descricao, $data->preco);
+
+            $success = ProdutoRepository::updateProduto($produto);
+            echo json_encode(['success' => $success]);
+        } else {
+            http_response_code(405);
+        }
     }
 
     public static function excluirProduto() {
@@ -66,7 +82,6 @@ class ProdutoController {
         } else {
             http_response_code(405);
         }
-    
     }
 }
 ?>

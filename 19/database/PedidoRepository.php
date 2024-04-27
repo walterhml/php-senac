@@ -18,5 +18,79 @@ class PedidoRepository {
         $connection->close();
         return $pedidos;
     }
+
+    public static function getPedidoById($id) {
+        $connection = DatabaseRepository::connect();
+        $result = $connection->query("SELECT * FROM produto WHERE id = $id");
+
+        $pedido = null;
+        if($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $pedido = new Produto($row['id'], $row['descricao'], $row['preco']);
+        }
+        $connection->close();
+        return $pedido;
+    }
+
+    public static function insertProduct(Produto $pedido) {
+        $connection = DatabaseRepository::connect();
+
+        $
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 ?>
