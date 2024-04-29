@@ -19,5 +19,61 @@ class PedidoRepository {
         $connection->close();
         return $pedidos;
     }
+
+    public static function getPedidoById($id) {
+        $connection = DatabaseRepository::connect();
+        $result = $connection->query("SELECT * FROM pedido WHERE id = $id");
+
+        $pedido = null;
+        if($result->num_rows > 0) {
+            $row = $result->fecth_assoc();
+            $pedido = new Pedido($row['id'], $row['data_pedido'], $row['status']);
+        }
+        $connection->close();
+        return $pedido;
+    }
+
+
+    public static function insertPedido(Pedido $pedido) {
+        $connection = DatabaseRepository::connect();
+        $id = $pedido->getId();
+        $sql = "INSERT INTO pedido (id) VALUES ('$id')";
+        $success = $connection->query($sql);
+        return $success;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 ?>
