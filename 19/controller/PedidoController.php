@@ -70,9 +70,10 @@ class PedidoController {
             if($pedidoExistente) {
                 //update das propriedades do pedido
                 $pedidoExistente->setStatus($status);
-                $pedidoExistente->setData($data);
+                $pedidoExistente->setData($data_pedido);
 
-                PedidoRepository::updatePedido($pedidoExistente);
+                $success = PedidoRepository::updatePedido($pedidoExistente);
+                echo json_encode(['success' => $success]);
             } else {
                 http_response_code(404);
                 echo json_encode(['error' => 'Pedido não encontrado']);

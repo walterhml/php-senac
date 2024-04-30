@@ -44,7 +44,7 @@ class PedidoRepository {
     }
 
     public static function updatePedido() {
-        
+
     }
 
     public static function deletePedido() {
