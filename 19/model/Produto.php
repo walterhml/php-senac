@@ -13,7 +13,7 @@ class Produto implements JsonSerializable {
     }
 
     public function getId() {
-        return $this->id;        
+        return $this->id;
     }
 
     public function getNome() {
@@ -37,7 +37,5 @@ class Produto implements JsonSerializable {
             'preco' => $this->preco
         ];
     }
-
-
 }
 ?>
