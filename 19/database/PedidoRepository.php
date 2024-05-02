@@ -43,12 +43,20 @@ class PedidoRepository {
         return $success;
     }
 
-    public static function updatePedido() {
+    public static function updatePedido(Pedido $pedido, $id) {
+        $connection = DatabaseRepository::connect();       
+        $data_pedido = $pedido->getDataPedido();
+        $status = $pedido->getStatus();
 
+        $sql = "UPDATE pedido SET data_pedido = '$data_pedido', status = '$status' WHERE id = $id";
+        $success = $connection->query($sql);
+        $connection->close();
+        return $success;
     }
 
-    public static function deletePedido() {
-
+    public static function deletePedido($id) {
+        $connection = DatabaseRepository::connect();
+        $sql = "DELETE FROM pedido WHERE id = $id";
     }
 }
 ?>

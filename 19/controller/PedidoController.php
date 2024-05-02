@@ -72,7 +72,7 @@ class PedidoController {
                 $pedidoExistente->setStatus($status);
                 $pedidoExistente->setData($data_pedido);
 
-                $success = PedidoRepository::updatePedido($pedidoExistente);
+                $success = PedidoRepository::updatePedido($pedidoExistente, $id);
                 echo json_encode(['success' => $success]);
             } else {
                 http_response_code(404);
